@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: "Space Grotesk", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(71, 255, 157, 0.08), transparent 22%),
+    radial-gradient(circle at top right, rgba(71, 255, 157, 0.035), transparent 18%),
+    linear-gradient(180deg, #060908 0%, #0a0f0d 48%, #050706 100%);
+  color: #e7f2ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(71, 255, 157, 0.055), transparent 20%),
+    radial-gradient(circle at 80% 20%, rgba(71, 255, 157, 0.025), transparent 16%),
+    linear-gradient(180deg, #060908 0%, #0a0f0d 48%, #050706 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.section-enter {
+  animation: fadeUp 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.section-enter-delayed {
+  animation: fadeUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.12s both;
+}
+
+.section-enter-delayed-2 {
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+}
+
+.lift-hover {
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.lift-hover:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(71, 255, 157, 0.08),
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 0 24px rgba(71, 255, 157, 0.04);
+}
+
+.logo-float {
+  animation:
+    fadeUp 0.8s ease both,
+    floatGlow 3.6s ease-in-out infinite 0.8s;
+}
+
+.splash-enter {
+  animation: splashReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.splash-loader {
+  animation: loaderSweep 1.4s ease-in-out infinite;
+}
+
+.splash-scan {
+  animation: scanline 2.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-enter,
+  .section-enter-delayed,
+  .section-enter-delayed-2,
+  .logo-float,
+  .splash-enter,
+  .splash-loader,
+  .splash-scan {
+    animation: none;
+  }
+
+  .lift-hover,
+  .lift-hover:hover {
+    transition: none;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes splashReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes floatGlow {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 14px rgba(71, 255, 157, 0.18));
+  }
+  50% {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 0 22px rgba(71, 255, 157, 0.24));
+  }
+}
+
+@keyframes loaderSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(65%);
+  }
+  100% {
+    transform: translateX(190%);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+}
+
+::selection {
+  background: rgba(71, 255, 157, 0.22);
+  color: #f7fffb;
+}
